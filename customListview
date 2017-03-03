@@ -1,0 +1,77 @@
+package com.example.levu.appstory;
+
+import android.content.Context;
+import android.os.Build;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+/**
+ * Created by Le Vu on 3/2/2017.
+ */
+
+public class CustomListViewStory extends BaseAdapter {
+
+    private Context mContext;
+    private ArrayList<HashMap<String,String>> bookStory;
+
+    private static LayoutInflater inflater=null;
+
+    public CustomListViewStory(Context context, ArrayList<HashMap<String,String>> data)
+    {
+        mContext=context;
+        bookStory=data;
+        inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+    @Override
+    public int getCount() {
+        return bookStory.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View view= convertView;
+        if(view==null){
+            view=inflater.inflate(R.layout.activity_custom_list_view_cau_chuyen,null);
+
+            //Tạo các thuộc tính và ánh xạ chúng
+            TextView title= (TextView) view.findViewById(R.id.textTitle);
+            TextView author =(TextView) view.findViewById(R.id.author);
+            ImageView banner=(ImageView) view.findViewById(R.id.imageBanner);
+
+            HashMap<String ,String> mBook = new HashMap<>();
+
+            mBook=bookStory.get(position);
+
+
+            title.setText(mBook.get("textTitle"));
+            author.setText(mBook.get("author"));
+            banner.setImageDrawable(mContext.getResources().getDrawable(R.drawable.banner));
+
+
+        }
+
+
+
+        return view;
+    }
+}
