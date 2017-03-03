@@ -21,19 +21,19 @@ import java.util.HashMap;
 public class CustomListViewStory extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<HashMap<String,String>> bookStory;
+    private ArrayList<HashMap<String,String>> books;
 
     private static LayoutInflater inflater=null;
 
     public CustomListViewStory(Context context, ArrayList<HashMap<String,String>> data)
     {
         mContext=context;
-        bookStory=data;
+        books =data;
         inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
     public int getCount() {
-        return bookStory.size();
+        return books.size();
     }
 
     @Override
@@ -60,7 +60,7 @@ public class CustomListViewStory extends BaseAdapter {
 
             HashMap<String ,String> mBook = new HashMap<>();
 
-            mBook=bookStory.get(position);
+            mBook=books.get(position);
 
 
             title.setText(mBook.get("textTitle"));
