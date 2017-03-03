@@ -1,0 +1,82 @@
+package com.example.levu.appstory;
+
+
+import android.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+public class CauTruyen extends AppCompatActivity {
+    private ListView listview;
+    private CustomListViewStory customListViewStory;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cau_truyen);
+        //chuyen ve trang chu
+        //ActionBar actionBar= getActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
+
+        //dữ liệu dã
+        final  String[] listTitle = new String[]{
+                "Đây là tiêu đề thứ 1 ",
+                "Đây là tiêu đề thứ 2 ",
+                "Đây là tiêu đề thứ 3 ",
+                "Đây là tiêu đề thứ 4 ",
+                "Đây là tiêu đề thứ 5 ",
+                "Đây là tiêu đề thứ 6 ",
+                "Đây là tiêu đề thứ 7 ",
+                "Đây là tiêu đề thứ 8 ",
+                "Đây là tiêu đề thứ 9 ",
+                "Đây là tiêu đề thứ 10 ",
+                "Đây là tiêu đề thứ 11 ",
+                "Đây là tiêu đề thứ 12 "
+
+
+        };
+        final  String[] listAuthor = new String[]{
+                "Tac gia 1 ",
+                "Tac gia 2 ",
+                "Tac gia 3 ",
+                "Tac gia 4 ",
+                "Tac gia 5 ",
+                "Tac gia 6 ",
+                "Tac gia 7 ",
+                "Tac gia 8 ",
+                "Tac gia 9 ",
+                "Tac gia 10 ",
+                "Tac gia 11 ",
+                "Tac gia 12 "
+
+
+        };
+
+
+        //đổ dữ liệu vào listview
+        ArrayList<HashMap<String,String>> listStory =new ArrayList<>();
+        for (int i =0;i<listTitle.length;i++){
+            HashMap<String,String> data=new HashMap<>();
+            data.put("textTitle",listTitle[i]);
+            data.put("author",listAuthor[i]);
+            listStory.add(data);
+        }
+
+        listview= (ListView) findViewById(R.id.list_Story);
+        //setup adapter
+
+        customListViewStory= new CustomListViewStory(getApplicationContext(),listStory);
+
+        listview.setAdapter(customListViewStory);
+
+
+
+    }
+}
